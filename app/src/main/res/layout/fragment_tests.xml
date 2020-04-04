@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@android:style/Widget.Material.ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:clipToPadding="false"
+    android:scrollbars="none"
+    tools:context="com.phadon.drivecambodia.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/relmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewRam"
+            style="?attr/cardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_margin="5dp"
+            card_view:cardBackgroundColor="@color/colorPrimary"
+            card_view:cardCornerRadius="5dp"
+            card_view:contentPadding="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtTotalRam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/google"
+                    android:text="Total progress"
+                    android:textColor="@color/white" />
+
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/arcProgressRam"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/txtTotalRam"
+                    android:layout_centerHorizontal="true"
+                    app:arc_bottom_text="RAM"
+                    app:arc_max="100"
+                    app:arc_progress="40"
+                    app:arc_text_color="@color/white" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>

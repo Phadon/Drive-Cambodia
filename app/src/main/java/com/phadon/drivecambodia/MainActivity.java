@@ -6,14 +6,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.phadon.drivecambodia.fragments.*;
 
 public class MainActivity extends AppCompatActivity {
+
+    int themeColor, themeColorDark;
+    ViewPager mViewPager;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
+        context = this;
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        themeColor = sharedPrefs.getInt("accent_color_dialog", Color.parseColor("#2196f3"));
+        appBar.setBackgroundColor(themeColor);
+//        themeColorDark = GetDetails.getDarkColor(context, themeColor);
+        mViewPager = findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        final SmartTabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setSelectedIndicatorColors(themeColorDark);
+        tabLayout.setViewPager(mViewPager);
     }
 
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
