@@ -1,41 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-<!--        <item name="cardStyle">@style/CardView.Light</item>-->
-<!--        <item name="listDividerStyle">@style/ListViewStyle.Light</item>-->
-<!--        <item name="popupWindowStyle">@style/PopupAppWindow.Light</item>-->
-<!--        <item name="optionsMenuStyle">@style/AppTheme.AppBarOverlay</item>-->
-        <item name="windowActionBar">false</item>
     </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-<!--    <style name="AppThemeDark.NoActionBar">-->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
-<!--    </style>-->
-
-    <style name="ListViewStyle.Light" parent="android:style/Widget.ListView">
-        <item name="android:divider">@color/background_material_light</item>
-    </style>
-
-    <style name="PopupAppWindow.Light" parent="AppTheme.PopupOverlay">
-        <item name="android:background">@color/background_material_light</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:itemBackground">@color/background_material_light</item>
-        <item name="android:textColor">@color/abc_primary_text_material_light</item>
-    </style>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

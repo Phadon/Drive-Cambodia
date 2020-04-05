@@ -1,93 +1,71 @@
 package com.phadon.drivecambodia;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
-import com.google.android.material.appbar.AppBarLayout;
+import com.cuberto.bubbleicontabbarandroid.TabBubbleAnimator;
 
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.phadon.drivecambodia.fragments.*;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    int themeColor, themeColorDark;
-    ViewPager mViewPager;
-    Context context;
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private TabBubbleAnimator tabBubbleAnimator;
+    private String[] titles = new String[]{"Home", "Clock", "Folder", "Menu"};
+    private int[] colors = new int[]{R.color.home, R.color.clock, R.color.folder, R.color.menu};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mFragmentList.add(new TabFragment(titles[0], colors[0]));
+        mFragmentList.add(new TabFragment(titles[1], colors[1]));
+        mFragmentList.add(new TabFragment(titles[2], colors[2]));
+        mFragmentList.add(new TabFragment(titles[3], colors[3]));
+        ViewPager viewPager = findViewById(R.id.viewPager);
+        FragmentStatePagerAdapter adapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragmentList.get(position);
+            }
 
-        AppBarLayout appBar = findViewById(R.id.appbar);
-        Toolbar toolBar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolBar);
-
-        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
-        context = this;
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        themeColor = sharedPrefs.getInt("accent_color_dialog", Color.parseColor("#2196f3"));
-        appBar.setBackgroundColor(themeColor);
-//        themeColorDark = GetDetails.getDarkColor(context, themeColor);
-        mViewPager = findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        final SmartTabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setSelectedIndicatorColors(themeColorDark);
-        tabLayout.setViewPager(mViewPager);
+            @Override
+            public int getCount() {
+                return mFragmentList.size();
+            }
+        };
+        viewPager.setAdapter(adapter);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.setupWithViewPager(viewPager);
+        tabBubbleAnimator = new TabBubbleAnimator(tabLayout);
+        tabBubbleAnimator.addTabItem(titles[0], R.drawable.ic_grid, colors[0]);
+        tabBubbleAnimator.addTabItem(titles[1], R.drawable.ic_clock,colors[1]);
+        tabBubbleAnimator.addTabItem(titles[2], R.drawable.ic_folder, colors[2]);
+        tabBubbleAnimator.addTabItem(titles[3], R.drawable.ic_menu, colors[3]);
+        tabBubbleAnimator.setUnselectedColorId(Color.BLACK);
+        tabBubbleAnimator.highLightTab(0);
+        viewPager.addOnPageChangeListener(tabBubbleAnimator);
     }
 
-    private class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new tabHome();
-                case 1:
-                    return new tabSkills();
-                case 3:
-                    return new tabTest();
-                default:
-                    return new tabSettings();
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 4;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return getString(R.string.home_title);
-                case 1:
-                    return getString(R.string.skills_title);
-                case 2:
-                    return getString(R.string.test_title);
-                case 3:
-                    return getString(R.string.settings_title);
-
-            }
-            return null;
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        tabBubbleAnimator.onStart((TabLayout) findViewById(R.id.tabLayout));
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        tabBubbleAnimator.onStop();
+    }
+
 }
