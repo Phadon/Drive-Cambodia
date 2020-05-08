@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rel_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="@color/cardview_dark_background">
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        style="@android:style/Widget.Material.ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:clipToPadding="false"
+        android:paddingTop="200dp"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rel_sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/recommended_card"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                card_view:cardCornerRadius="20dp"
+                card_view:contentPadding="10dp">
+
+                <TextView
+                    android:id="@+id/recommended_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/recommended_module" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <include
+                android:id="@+id/license_a_card"
+                layout="@layout/license_card"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/recommended_card"
+                android:layout_margin="5dp"/>
+
+            <include
+                android:id="@+id/license_b_card"
+                layout="@layout/license_card"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/license_a_card"
+                android:layout_margin="5dp"/>
+
+            <include
+                android:id="@+id/license_c_d_card"
+                layout="@layout/license_card"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/license_b_card"
+                android:layout_margin="5dp"/>
+
+            <include
+                android:id="@+id/license_e_card"
+                layout="@layout/license_card"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/license_c_d_card"
+                android:layout_margin="5dp"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

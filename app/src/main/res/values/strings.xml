@@ -7,4 +7,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="recommended_module">Recommended module</string>
+    <string name="license_type_a">Get license type A \"Motorbikes\"</string>
+    <string name="license_type_b">Get license type B \"Tourist/Family cars\"</string>
+    <string name="license_type_c_d">Get license type C and D \"Heavy vehicles\"</string>
+    <string name="license_type_e">Get license type E \"All non Motorbike land vehicles</string>
+
 </resources>
