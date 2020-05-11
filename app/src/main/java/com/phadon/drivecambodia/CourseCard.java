@@ -1,6 +1,5 @@
 package com.phadon.drivecambodia;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,12 +13,6 @@ public class CourseCard {
     private TextView mCourseText;
     private ContentLoadingProgressBar mCourseProgressBar;
 
-    public CourseCard(ImageView image, TextView text, ContentLoadingProgressBar progressBar) {
-        mCourseImage = image;
-        mCourseText = text;
-        mCourseProgressBar = progressBar;
-    }
-
     public CourseCard(View view) {
         mCardView = (CardView) view;
 
@@ -29,16 +22,22 @@ public class CourseCard {
     }
 
 
-    public void setText(String text) {
+    public CourseCard setText(String text) {
         mCourseText.setText(text);
+        return this;
     }
 
-    public void setBackgroundColor(int backgroundColor) {
+    public CourseCard setBackgroundColor(int backgroundColor) {
         mCardView.setCardBackgroundColor(backgroundColor);
+        return this;
     }
 
-    public void setCourseImage(int resId) {
+    public CourseCard setCourseImage(int resId) {
         mCourseImage.setImageResource(resId);
+        return this;
     }
 
+    public void setOnClickListener(View.OnClickListener listener) {
+        mCardView.setOnClickListener(listener);
+    }
 }
