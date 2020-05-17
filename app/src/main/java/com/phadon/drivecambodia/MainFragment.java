@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -74,18 +73,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.license_a_card:
-                Toast.makeText(getContext(), "Clicked license A", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.license_b_card:
-                Toast.makeText(getContext(), "Clicked license B", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.license_c_d_card:
-                Toast.makeText(getContext(), "Clicked license C&D", Toast.LENGTH_SHORT).show();
-                break;
-            default:
-                Toast.makeText(getContext(), "Clicked license E", Toast.LENGTH_SHORT).show();
-        }
+        mCallBacks.onCourseSelected(v);
     }
 }

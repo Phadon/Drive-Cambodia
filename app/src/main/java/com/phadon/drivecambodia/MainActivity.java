@@ -1,7 +1,10 @@
 package com.phadon.drivecambodia;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 public class MainActivity extends SingleFragmentActivity implements MainFragment.CallBacks {
@@ -13,22 +16,22 @@ public class MainActivity extends SingleFragmentActivity implements MainFragment
 
     @Override
     public void onCourseSelected(View view) {
-        Fragment newFragment;
+        Intent intent = LicenseActivity.newIntent(getApplicationContext());
         switch (view.getId()) {
             case R.id.license_a_card:
-                newFragment = LicenseAFragment.newInstance();
+                intent.putExtra(Intent.EXTRA_TEXT, "License A");
                 break;
             case R.id.license_b_card:
-                newFragment = LicenseBFragment.newInstance();
+                intent.putExtra(Intent.EXTRA_TEXT, "License B");
                 break;
             case R.id.license_c_d_card:
-                newFragment = LicenseCDFragment.newInstance();
+                intent.putExtra(Intent.EXTRA_TEXT, "License CD");
                 break;
             default:
-                newFragment = LicenseEFragment.newInstance();
+                intent.putExtra(Intent.EXTRA_TEXT, "License E");
         }
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, newFragment)
-                .commit();
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
+
 }

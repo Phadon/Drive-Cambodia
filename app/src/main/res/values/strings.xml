@@ -5,13 +5,19 @@
     <string name="test_title">Tests</string>
     <string name="settings_title">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="recommended_module">Recommended module</string>
     <string name="license_type_a">Get license type A \"Motorbikes\"</string>
     <string name="license_type_b">Get license type B \"Tourist/Family cars\"</string>
     <string name="license_type_c_d">Get license type C and D \"Heavy vehicles\"</string>
     <string name="license_type_e">Get license type E \"All non Motorbike land vehicles</string>
 
+    <!-- First page of module 1 -->
+    <string name="bullet_point">\u25CF</string>
+    <string name="license_a_mod_1_title">How to be a good driver</string>
+    <string name="license_a_mod_1_para_1">It takes time to become a good driver, but there are things you can do now to help you get better faster!</string>
+    <string name="license_a_mod_1_bullet_1">Be aware of what\'s going on around your vehicle.</string>
+    <string name="license_a_mod_1_bullet_2">Don\'t get distracted while driving.</string>
+    <string name="license_a_mod_1_bullet_3">Watch out for other road users.</string>
+    <string name="license_a_mod_1_bullet_4">Understand that everyone makes mistakes.</string>
+    <string name="license_a_mod_1_bullet_5">Be patient with your own mistakes as well as other peoples\'.</string>
 </resources>
